@@ -5,11 +5,11 @@ node_modules/
 .npm
 
 # dotenv environment variables file
-.env
+#.env
 
 dist
 npm-debug.log
-.env
+#.env
 .DS_Store
 
 # Logs
