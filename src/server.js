@@ -47,10 +47,10 @@ class Server {
     this.app.use(express.json());
     //parsing the client data
     this.app.use(express.urlencoded({ extended: true }));
-    //this.app.use(bodyParser.urlencoded({ extended: true}));
+    this.app.use(bodyParser.urlencoded({ extended: true}));
     // for parsing application/xwww-
-    // this.app.use(bodyParser.urlencoded({extended:true}));
-    // this.app.use(bodyParser.json());
+    this.app.use(bodyParser.urlencoded({extended:true}));
+    this.app.use(bodyParser.json());
     // for parsing multipart/form-data
     // this.app.use(upload.array());
     this.app.use(express.static("public"));
