@@ -2114,7 +2114,8 @@ console.log("companyId::::::"+result.companyId)
 
   // sent mail to new gesiterd user
   mailToUserOnRegisterd = async (data, compId) => {
-    const link = "http://182.77.62.52:3000/";
+    //const link = "http://182.77.62.52:3000/";
+    const link="https://main.d3n5kg237nhmbg.amplifyapp.com/";
     console.log("Sending Email");
     const mailData = {
       to: data.to,
