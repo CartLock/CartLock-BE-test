@@ -858,7 +858,7 @@ class UserController {
   // sent mail on forgot password
   mailToUserOnForgotPassword = async (data, compId) => {
    // const link="http://182.77.62.52:3000/"
-    const link="https://main.d3n5kg237nhmbg.amplifyapp.com/"
+    const link="https://main.d3n5kg237nhmbg.amplifyapp.com/login/"
     console.log(process.env.BASE_URL + "   local base url");
     const mailData = {
       to: data.to,
