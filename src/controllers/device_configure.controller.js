@@ -20,40 +20,52 @@ class DeviceConfiureController {
   }
 
 
-
-  getDeviceDetails= async (req, res, next) => {
+getDeviceDetails = async (req, res, next) => {
     try {
-      const result =
-        await ValidationService.createDevice().validateAsync(
-          req.body
-        );
-        console.log("Validation Schema::"+result.macAddress)
-        console.log("Before Fecthiong Query")
+      const result = await ValidationService.createDevice().validateAsync(
+        req.body
+      );
+      console.log("Validation Schema::" + result.macAddress);
+      console.log("Before Fecthiong Query");
       //check if user alreday Register or not
       const isDeviceExist = await DeviceConfiguration.findOne({
         where: { hardware_id: result.macAddress },
         //here we need to write the like operator query
-        attributes: ['id', 'full_name', 'display_name', 'hardware_id', 'createdAt','updatedAt','company_id'],
-       
+        attributes: [
+          "id",
+          "full_name",
+          "display_name",
+          "hardware_id",
+          "createdAt",
+          "updatedAt",
+          "company_id",
+        ],
       });
-     if (isDeviceExist) { 
-//getting Company Details
-const companySettings= await SettingCompany.findOne({
-  where: { company_id: isDeviceExist.company_id },
-  attributes: ['id', 'company_id', 'payment_cost', 'currency', 'waiting_hour'],
-})
-isDeviceExist.dataValues.companySettings=companySettings;
-     }else{
-       return res.status(200).json({
+
+      if (isDeviceExist) {
+        //getting Company Details
+        const companySettings = await SettingCompany.findOne({
+          where: { company_id: isDeviceExist.company_id },
+          attributes: [
+            "id",
+            "company_id",
+            "payment_cost",
+            "currency",
+            "waiting_hour",
+          ],
+        });
+        isDeviceExist.dataValues.companySettings = companySettings;
+      } else {
+        return res.status(200).json({
           status: 0,
           message: "Device Not Found",
-        });  
+        });
+      }
+    } catch (error) {
+      if (error.isJoi === true) error.status = 422;
+      next(error);
     }
-    catch (error) {
-      if (error.isJoi === true) error.status = 422
-      next(error)
-    }
-  }
+  };
 
 
 
