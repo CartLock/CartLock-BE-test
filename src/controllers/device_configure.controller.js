@@ -55,6 +55,11 @@ getDeviceDetails = async (req, res, next) => {
           ],
         });
         isDeviceExist.dataValues.companySettings = companySettings;
+         return res.status(200).json({
+          status: 1,
+          message: "The Device Info",
+          payload: isDeviceExist,
+        });
       } else {
         return res.status(200).json({
           status: 0,
