@@ -175,6 +175,12 @@ class UserController {
       isUserExit.dataValues.companyName = isCompanyIdValid.company_name;
 
       delete isUserExit.dataValues.password;
+      //getting role name
+      const roleExist = await Role.findOne({
+        where: { id: isUserExit.role_id },
+      });
+      console.log(roleExist.role_title);
+      isUserExit.dataValues.roleName = roleExist.role_title;
 
       let tokenPayload = {
         id: isUserExit.id,
