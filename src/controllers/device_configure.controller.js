@@ -36,31 +36,18 @@ class DeviceConfiureController {
         attributes: ['id', 'full_name', 'display_name', 'hardware_id', 'createdAt','updatedAt','company_id'],
        
       });
-      
+     if (isDeviceExist) { 
 //getting Company Details
 const companySettings= await SettingCompany.findOne({
   where: { company_id: isDeviceExist.company_id },
   attributes: ['id', 'company_id', 'payment_cost', 'currency', 'waiting_hour'],
 })
 isDeviceExist.dataValues.companySettings=companySettings;
-
-
-      if(!isDeviceExist){
-        return res
-        .status(200)
-        .json({
+     }else{
+       return res.status(200).json({
           status: 0,
           message: "Device Not Found",
-        });
-      }else{
-        return res
-        .status(200)
-        .json({
-          status: 1,
-          message: "The Device Info",
-          payload: isDeviceExist,
-        });
-      }
+        });  
     }
     catch (error) {
       if (error.isJoi === true) error.status = 422
