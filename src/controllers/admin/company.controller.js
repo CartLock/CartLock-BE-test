@@ -68,19 +68,7 @@ class CompanyController {
         throw createError.NotFound("Company Already exist..");
       // company data
       const companyData = {
-        // company_id: result.companyId,
-        // company_name: result.companyName,
-        // company_address: result.companyAddress,
-        // company_street: result.companyStreet,
-        // company_country: result.companyCountry,
-        // company_zip: result.companyZip,
-        // company_e_mail: result.companyEmail,
-        // poc_first_name: result.POCFirstName,
-        // poc_last_name: result.POCLastName,
-        // poc_e_mail: result.POCEmail,
-        // poc_phone_number: result.POCPhoneNumber,
-        // is_deactive: result.isDeactive,
-
+       
         company_id: result.companyId,
         company_code: result.companyCode,
         location: result.location,
@@ -95,28 +83,15 @@ class CompanyController {
         acc_no: result.merchantAccNo,
         is_deactive: result.isDeactive,
         currency:result.currency,
-        company_name:result.companyName
+        company_name:result.companyName,
+        hour: result.hour,
+        min: result.min,
       };
 
       let company = await Company.create(companyData);
       const uniquekey = CommonService.generateTempPassword(10, "alphaNumber");
-      // Creating Default user
-      // if (company.id) {
-      //   const userData = {
-      //     first_name: result.POCFirstName,
-      //     last_name: result.POCLastName,
-      //     dispay_name: result.POCFirstName,
-      //     e_mail: result.POCEmail,
-      //     phone_number: result.POCPhoneNumber,
-      //     company_id: company.id,
-      //     unique_code: uniquekey,
-      //     role_id: "1",
-      //     is_sentinel: "1",
-      //   };
-      //   await User.create(userData);
-      // }
+    
 
-      // create company settings
       if (company.id) {
         const companySettingData = {
           company_id: company.id,
@@ -404,6 +379,8 @@ class CompanyController {
         payment_gateway: result.paymentGateway,
         acc_no: result.merchantAccNo,
         is_deactive: result.isDeactive,
+        hour: result.hour,
+        min: result.min,
       };
 
       let company = await Company.update(companyData, {
