@@ -99,19 +99,7 @@ class ValidationService {
   // add company schema
   addCompanySchema = () => {
     const schema = Joi.object({
-      // id: Joi.number().allow(null).allow(''),
-      // companyId: Joi.string().required(),
-      // companyName: Joi.string().required(),
-      // companyAddress: Joi.string().allow(null).allow(''),
-      // companyStreet: Joi.string().allow(null).allow(''),
-      // companyCountry: Joi.string().allow(null).allow(''),
-      // companyZip: Joi.string().allow(null).allow(''),
-      // companyEmail: Joi.string().allow(null).allow(''),
-      // POCFirstName: Joi.string().required(),
-      // POCLastName: Joi.string().required(),
-      // POCEmail: Joi.string().required(),
-      // POCPhoneNumber: Joi.string().required(),
-      // isDeactive: Joi.string().allow(null).allow(''),
+      
 
       //added By Saurav Satpathy
       id: Joi.number().allow(null).allow(""),
@@ -129,6 +117,8 @@ class ValidationService {
       isDeactive: Joi.string().allow(null).allow(""),
       currency:Joi.string().allow(null).allow(""),
       companyName:Joi.string().allow(null).allow(""),
+      hour: Joi.string().allow(null).allow(""),
+      min: Joi.string().allow(null).allow(""),
     });
     return schema;
   };
@@ -151,7 +141,9 @@ class ValidationService {
       paymentGateway: Joi.string().allow(null).allow(""),
       merchantAccNo:Joi.string().allow(null).allow(""),
       isDeactive: Joi.string().allow(null).allow(""),
-      companyName:Joi.string().allow(null).allow("")
+      companyName:Joi.string().allow(null).allow(""),
+       hour: Joi.string().allow(null).allow(""),
+      min: Joi.string().allow(null).allow("")
     });
     return schema;
   };
