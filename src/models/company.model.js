@@ -29,6 +29,8 @@ module.exports = (sequelize, Sequelize) => {
       payment_gateway: { type: Sequelize.STRING },
       acc_no: { type: Sequelize.STRING },
       currency: { type: Sequelize.STRING },
+      hour: { type: Sequelize.STRING },
+      min: { type: Sequelize.STRING },
     },
     {
       tableName: "company",
