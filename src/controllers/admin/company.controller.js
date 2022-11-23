@@ -98,6 +98,8 @@ class CompanyController {
           is_multi_phone_login: "0",
           is_force_firmware_update: "0",
           offline_reconect: "2",
+          waiting_hour: result.timing,
+          payment_cost: result.cartFee,
           schedule_opens: JSON.stringify([
             {
               scheduleDay: "Monday",
